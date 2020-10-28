@@ -4,18 +4,27 @@
 #
 Name     : h11
 Version  : 0.11.0
-Release  : 1
+Release  : 2
 URL      : https://files.pythonhosted.org/packages/22/01/01dc716e71eeead6c6329a19028548ac4a5c2a769a130722548c63479038/h11-0.11.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/22/01/01dc716e71eeead6c6329a19028548ac4a5c2a769a130722548c63479038/h11-0.11.0.tar.gz
 Summary  : A pure-Python, bring-your-own-I/O implementation of HTTP/1.1
 Group    : Development/Tools
 License  : MIT
+Requires: h11-license = %{version}-%{release}
 Requires: h11-python = %{version}-%{release}
 Requires: h11-python3 = %{version}-%{release}
 BuildRequires : buildreq-distutils3
 
 %description
 ===
+
+%package license
+Summary: license components for the h11 package.
+Group: Default
+
+%description license
+license components for the h11 package.
+
 
 %package python
 Summary: python components for the h11 package.
@@ -45,7 +54,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1603923399
+export SOURCE_DATE_EPOCH=1603924599
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -60,6 +69,8 @@ python3 setup.py build
 %install
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/package-licenses/h11
+cp %{_builddir}/h11-0.11.0/LICENSE.txt %{buildroot}/usr/share/package-licenses/h11/538b04fc7835aa9ba3e5de009b5324007eb5a3d2
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
@@ -67,6 +78,10 @@ echo ----[ mark ]----
 
 %files
 %defattr(-,root,root,-)
+
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/h11/538b04fc7835aa9ba3e5de009b5324007eb5a3d2
 
 %files python
 %defattr(-,root,root,-)
