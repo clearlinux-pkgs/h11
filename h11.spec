@@ -4,7 +4,7 @@
 #
 Name     : h11
 Version  : 0.11.0
-Release  : 2
+Release  : 3
 URL      : https://files.pythonhosted.org/packages/22/01/01dc716e71eeead6c6329a19028548ac4a5c2a769a130722548c63479038/h11-0.11.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/22/01/01dc716e71eeead6c6329a19028548ac4a5c2a769a130722548c63479038/h11-0.11.0.tar.gz
 Summary  : A pure-Python, bring-your-own-I/O implementation of HTTP/1.1
